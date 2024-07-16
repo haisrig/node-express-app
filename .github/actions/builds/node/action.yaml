@@ -6,14 +6,16 @@ inputs:
     default: 18.20.3
 runs:
   using: composite
-  steps:
-    - name: Node version display
-      run: echo "${{ inputs.node-version }}"
-      shell: bash
-    - name: setup node
+  steps:    
+    - name: Setup Node
       if: inputs.node-version != '18.20.3'
       uses: actions/setup-node@v3
       with:
         node-version: ${{ inputs.node-version }}
+    - name: Build Node Application
+      run: |
+        npm ci
+        npm run build
+        ls
 
        
