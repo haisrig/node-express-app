@@ -3,12 +3,12 @@ description: The action will handle all Node build related actions.
 inputs:
   node-version:
     description: NodeJS version
-    default: 18.15.0
+    default: 18.20.3
 runs:
   using: composite
   steps:
     - name: setup node
-      run: node --version
-      shell: bash
+      if: inputs.node-version != 18.20.3
+      uses: actions/setup-node@v3
 
        
