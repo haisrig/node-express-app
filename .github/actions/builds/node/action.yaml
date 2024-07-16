@@ -8,7 +8,7 @@ runs:
   using: composite
   steps:
     - name: setup node
-      if: inputs.node-version != 18.20.3
+      if: inputs.node-version != '18.20.3'
       uses: actions/setup-node@v3
 
        
