@@ -1,4 +1,3 @@
----
 build_type: node
 static_code_analysis: lint
 branch_config:
