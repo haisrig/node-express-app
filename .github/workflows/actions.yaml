@@ -1,0 +1,26 @@
+name: Github Actions
+on: 
+  push:
+  workflow_dispatch:
+
+jobs:
+  read_config_file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Print vars
+        run: |
+          echo "${{github.workspace}}"
+          pwd
+          ls
+      - name: read_yaml_file
+        uses: pietrobolcato/action-read-yaml@1.0.0
+        id: read_action
+        with:
+          config: ${{ github.workspace }}/config.yaml
+      - name: print configs
+        run:
+          echo "${{steps.read_action.outputs.build_type}}"
+          echo "${{steps.read_action.outputs.static_code_analysis}}"
+
