@@ -1,10 +1,14 @@
 name: Handle Node build actions
 description: The action will handle all Node build related actions.
-
+inputs:
+  node-version:
+    description: NodeJS version
+    default: 18.15.0
 runs:
   using: composite
   steps:
-    - name: test
-      run: |
-        echo "${{ github.workspace }}"
-      shell: bash    
+    - name: setup node
+      run: node --version
+      shell: bash
+
+       
