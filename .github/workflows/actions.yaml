@@ -18,5 +18,5 @@ jobs:
       - name: print configs
         run: echo "${{env.static_code_analysis}}"
       - name: perform build
-        uses: ./github/actions/builds/node
+        uses: .github/actions/builds/node
 
