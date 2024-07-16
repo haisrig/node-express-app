@@ -21,7 +21,7 @@ jobs:
             file-path: "${{ github.workspace }}/config.yaml"
             separator: '.'
       - name: print configs
-        run:
-          echo "${{steps.read_action.outputs.build_type}}"
-          echo "${{steps.read_action.outputs.static_code_analysis}}"
+        run: |
+          echo "${{steps.read_action.outputs}}"
+          env
 
