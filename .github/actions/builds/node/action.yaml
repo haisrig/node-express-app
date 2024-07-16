@@ -1,0 +1,9 @@
+name: Handle Node build actions
+description: The action will handle all Node build related actions.
+
+runs:
+  using: composite
+  steps:
+    - name: test
+      run: |
+        echo "${{ github.workspace }}"    

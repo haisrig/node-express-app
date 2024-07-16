@@ -9,11 +9,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Print vars
-        run: |
-          echo "${{github.workspace}}"
-          pwd
-          ls
       - name: read_yaml_file
         uses: actions-tools/yaml-outputs@v2
         id: read_action
@@ -21,8 +16,7 @@ jobs:
             file-path: "${{ github.workspace }}/config.yaml"
             separator: '.'
       - name: print configs
-        run: |
-          echo "${{steps.read_action.outputs}}"
-          echo "${{env.static_code_analysis}}"
-          env
+        run: echo "${{env.static_code_analysis}}"
+      - name: perform build
+        uses: ./github/actions/builds/node
 
