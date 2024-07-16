@@ -1,13 +1,9 @@
-name: example
-environment:
-  name: example
-  permissions:
-    - name: example
-      permission: read
-    - name: example2
-      permission: write
-deployment:
-  code:
-    source:
-      libs: path/to/libs
-      entry: path/to/entry
+build_type: node
+static_code_analysis: lint
+branch_config:
+  branches: 
+  - name: feature
+    build: true
+    unit_tests: true
+    code_analysis: true
+    store_artifact: true
