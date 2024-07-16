@@ -17,5 +17,6 @@ runs:
         npm ci
         npm run build
         ls
+      shell: bash
 
        
