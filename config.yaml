@@ -1,23 +1,20 @@
+---
 build_type: node
 static_code_analysis: lint
-
 branch_config:
-  - feature:
+  feature: 
     build: true
     unit_tests: true
     code_analysis: true
     store_artifact: true
-
-  - develop:
+  develop:
     build: true
     unit_tests: true
     code_analysis: true
     store_artifact: true
-
-  - release:
+  release:
     build: true
     store_artifact: true
-
-  - main:
+  main:
     build: true
     store_artifact: true
