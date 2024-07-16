@@ -15,10 +15,11 @@ jobs:
           pwd
           ls
       - name: read_yaml_file
-        uses: pietrobolcato/action-read-yaml@1.0.0
+        uses: actions-tools/yaml-outputs@v2
         id: read_action
         with:
-          config: ${{ github.workspace }}/config.yaml
+            file-path: "${{ github.workspace }}/config.yaml"
+            separator: '.'
       - name: print configs
         run:
           echo "${{steps.read_action.outputs.build_type}}"
