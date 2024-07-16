@@ -18,5 +18,10 @@ runs:
         npm run build
         ls
       shell: bash
+    - name: Perform ESLint
+      run: |
+        ls
+        npm run lint
+      shell: bash
 
        
