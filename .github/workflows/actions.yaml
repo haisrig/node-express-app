@@ -23,6 +23,6 @@ jobs:
       - name: print configs
         run: |
           echo "${{steps.read_action.outputs}}"
-          echo "${{steps.read_action.outputs.env}}"
+          echo "${{env.static_code_analysis}}"
           env
 
