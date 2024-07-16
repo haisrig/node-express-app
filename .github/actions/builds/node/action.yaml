@@ -9,7 +9,7 @@ runs:
   steps:
     - name: Node version display
       run: echo "${{ inputs.node-version }}"
-      bash: shell
+      shell: bash
     - name: setup node
       if: inputs.node-version != '18.20.3'
       uses: actions/setup-node@v3
