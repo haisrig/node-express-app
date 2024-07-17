@@ -1,5 +1,5 @@
 build_type: node
-static_code_analysis: lint
+static_code_analysis: sonar
 branch_config:
   branches: 
   - name: feature

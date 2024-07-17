@@ -1,9 +1,12 @@
 name: Handle Node build actions
 description: The action will handle all Node build related actions.
 inputs:
-  node-version:
+  node_version:
     description: NodeJS version
     default: 18.20.3
+  static_code_analysis:
+    description: Tool to be used for static code analysis
+    default: lint
 runs:
   using: composite
   steps:    
@@ -18,10 +21,15 @@ runs:
         npm run build
         ls
       shell: bash
-    - name: Perform ESLint
-      run: |
-        ls
-        npm run lint
+    - name: Execute Unitetests
+      run: npm run test
       shell: bash
+    - name: Perform ESLint
+      if: inputs.static_code_analysis = 'lint'
+      run: npm run lint
+      shell: bash
+    - name: Perform Sonar Analysis
+      if: inputs.static_code_analysis = 'sonar'
+      run: echo "Sonar analysis..."
 
        
