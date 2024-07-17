@@ -20,5 +20,5 @@ jobs:
       - name: perform build
         uses: ./.github/actions/builds/node
         with:
-          static_code_analysis = ${{env.static_code_analysis}}
+          static_code_analysis: ${{env.static_code_analysis}}
 
