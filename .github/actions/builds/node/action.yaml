@@ -45,6 +45,10 @@ runs:
       if: inputs.code_analysis == 'true' && inputs.static_code_analysis == 'sonar'
       run: echo "Sonar analysis..."
       shell: bash
+    - name: print vars
+      run: |
+        echo "printing...."
+        echo "${{github.event.repository.name}}-${GITHUB_REF_NAME////-}-${GITHUB_RUN_NUMBER}"
     - name: Store artifact
       if: inputs.store_artifact == 'true'
       uses: actions/upload-artifact@v4
