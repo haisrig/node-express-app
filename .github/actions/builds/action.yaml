@@ -1,0 +1,40 @@
+name: Handle build actions
+description: Perform build action based on the build type.
+inputs:
+  node_version:
+    description: NodeJS version
+    default: 18.20.3
+  static_code_analysis:
+    description: Tool to be used for static code analysis like sonar, lint.
+    default: lint
+  build:
+    description: true if build action needs to be performed.
+  unit_test:
+    description: true if unit test action needs to be performed.
+  code_analysis:
+    description: true if static code analysis action needs to be performed.
+  store_artifact:
+    description: true to store the artifacts.
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Get branch name from ref      
+      run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+      id: extract_branch
+      shell: bash
+    - name: Read YAML File
+      uses: ./.github/actions/read_yaml
+      id: read_action
+      with:
+          branch-name: ${{steps.extract_branch.outputs.branch}}
+    - name: perform build
+      uses: ./.github/actions/builds/node
+      with:          
+        build: ${{steps.read_action.outputs.build || 'false'}}
+        unit_test: ${{steps.read_action.outputs.unit_test || 'false'}}
+        code_analysis: ${{steps.read_action.outputs.code_analysis || 'false'}}
+        store_artifact: ${{steps.read_action.outputs.store_artifact || 'false'}}
+        static_code_analysis: ${{steps.read_action.outputs.static_code_analysis || 'sonar'}}

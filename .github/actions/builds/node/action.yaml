@@ -16,10 +16,6 @@ inputs:
   store_artifact:
     description: true to store the artifacts.
 
-defaults:
-  run:
-    shell: bash
-
 runs:
   using: composite
   steps:
@@ -33,6 +29,7 @@ runs:
       run: |
         npm ci
         npm run build
+      shell: bash
     - name: Execute Unitetests
       if: inputs.unit_test == 'true'
       run: npm run test
