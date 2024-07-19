@@ -32,7 +32,6 @@ runs:
       run: |
         npm ci
         npm run build
-        ls
       shell: bash
     - name: Execute Unitetests
       if: inputs.unit_test == 'true'

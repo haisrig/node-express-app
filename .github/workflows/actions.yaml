@@ -21,9 +21,9 @@ jobs:
       - name: perform build
         uses: ./.github/actions/builds/node
         with:          
-          build: ${{steps.read_action.outputs.build}}
-          unit_test: ${{steps.read_action.outputs.unit_test}}
-          code_analysis: ${{steps.read_action.outputs.code_analysis}}
-          store_artifact: ${{steps.read_action.outputs.store_artifact}}
-          static_code_analysis: ${{steps.read_action.outputs.static_code_analysis}} || 'false'
+          build: ${{steps.read_action.outputs.build}} || 'false'
+          unit_test: ${{steps.read_action.outputs.unit_test}} || 'false'
+          code_analysis: ${{steps.read_action.outputs.code_analysis}} || 'false'
+          store_artifact: ${{steps.read_action.outputs.store_artifact}} || 'false'
+          static_code_analysis: ${{steps.read_action.outputs.static_code_analysis}} || 'sonar'
 
