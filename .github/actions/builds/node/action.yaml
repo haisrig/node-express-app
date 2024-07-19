@@ -46,7 +46,11 @@ runs:
       run: echo "Sonar analysis..."
       shell: bash
     - name: Prepare Artifact Name
-      run: echo "ARTIFACT_NAME=${{github.event.repository.name}}-${GITHUB_REF_NAME////-}-${GITHUB_RUN_NUMBER}" >> $GITHUB_OUTPUT
+      run: |
+        echo "ARTIFACT_NAME=${{github.event.repository.name}}-${GITHUB_REF_NAME////-}-${GITHUB_RUN_NUMBER}" >> $GITHUB_OUTPUT
+        env
+        echo "---------------------------------------------------------------"
+        cat $GITHUB_OUTPUT
       shell: bash
     - name: Store Artifact
       if: inputs.store_artifact == 'true'
