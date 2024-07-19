@@ -9,4 +9,6 @@ jobs:
       - name: Execute Build
         run: |
           env
-        # uses:  ./.github/actions/builds
+          echo "branch=${{GITHUB_REF#refs/heads/}}"
+        
+          # uses:  ./.github/actions/builds
