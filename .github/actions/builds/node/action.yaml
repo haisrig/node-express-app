@@ -21,33 +21,29 @@ default:
 
 runs:
   using: composite
-  steps:   
-    - name: print input envs
-      run: |
-        echo "${{inputs.build}}"
-        echo "${{inputs.store_artifact}}"
-        echo "------------------------------------------"
-      shell: bash
+  steps:
     - name: Setup Node
       if: inputs.node-version != '18.20.3'
       uses: actions/setup-node@v3
       with:
         node-version: ${{ inputs.node-version }}
     - name: Build Node Application
+      if: inputs.build == 'true'
       run: |
         npm ci
         npm run build
         ls
       shell: bash
     - name: Execute Unitetests
+      if: inputs.unit_test == 'true'
       run: npm run test
       shell: bash
     - name: Perform ESLint
-      if: inputs.static_code_analysis == 'lint'
+      if: if: inputs.code_analysis == 'true' && inputs.static_code_analysis == 'lint'
       run: npm run lint
       shell: bash
     - name: Perform Sonar Analysis
-      if: inputs.static_code_analysis == 'sonar'
+      if: if: inputs.code_analysis == 'true' && inputs.static_code_analysis == 'sonar'
       run: echo "Sonar analysis..."
       shell: bash
 
