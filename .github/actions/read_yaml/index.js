@@ -17,7 +17,7 @@ function run() {
     console.log("Branch Name:", branchName)
     console.log(repoConfig);
     console.log("..........................")
-    const branchConfig = repoConfig.branches.filter(branch => branch.name == branchType)
+    const branchConfig = repoConfig.branches.filter(branch => branch.type == branchType)
     console.log("Branch Config:", branchConfig);
     core.setOutput("build_type", repoConfig.build_type);
     core.setOutput("static_code_analysis", repoConfig.static_code_analysis);
