@@ -26,6 +26,7 @@ runs:
       run: |
         echo "${{inputs.build}}"
         echo "${{inputs.store_artifact}}"
+        echo "------------------------------------------"
       shell: bash
     - name: Setup Node
       if: inputs.node-version != '18.20.3'

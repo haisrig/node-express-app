@@ -21,7 +21,7 @@ jobs:
       - name: perform build
         uses: ./.github/actions/builds/node
         with:          
-          build: steps.read_action.outputs.build
+          build: ${{steps.read_action.outputs.build}}
           unit_test: ${{steps.read_action.outputs.unit_test}}
           code_analysis: ${{steps.read_action.outputs.code_analysis}}
           store_artifact: ${{steps.read_action.outputs.store_artifact}}
