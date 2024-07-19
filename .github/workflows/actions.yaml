@@ -25,5 +25,5 @@ jobs:
           unit_test: ${{steps.read_action.outputs.unit_test}}
           code_analysis: ${{steps.read_action.outputs.code_analysis}}
           store_artifact: ${{steps.read_action.outputs.store_artifact}}
-          static_code_analysis: ${{steps.read_action.outputs.code_analysis}}
+          static_code_analysis: ${{steps.read_action.outputs.static_code_analysis}}
 

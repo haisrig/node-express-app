@@ -22,11 +22,6 @@ function run() {
     core.setOutput("unit_test", branchConfig.unit_tests.toString());
     core.setOutput("code_analysis", branchConfig.code_analysis.toString());
     core.setOutput("store_artifact", branchConfig.store_artifact.toString());
-
-
-    // core.setOutput("build_type", branchConfig.build_type);
-    // core.setOutput("build_type", branchConfig.build_type);
-
 }
 
 run()
