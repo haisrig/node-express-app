@@ -44,7 +44,6 @@ runs:
       if: inputs.code_analysis == 'true' && inputs.static_code_analysis == 'sonar'
       run: echo "Sonar analysis..."
       shell: bash
-      shell: bash
     - name: Store artifact
       if: inputs.store_artifact == 'true'
       uses: actions/upload-artifact@v4
