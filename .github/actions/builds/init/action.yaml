@@ -21,8 +21,9 @@ runs:
   steps:    
     - name: Get branch name from ref      
       run: |
-        # echo "branch=${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
-        echo "branch=${GITHUB_REF_NAME}" >> $GITHUB_OUTPUT
+        echo "branch=${GITHUB_REF_NAME}" >> $GITHUB_OUTPUT"
+        echo "$GITHUB_OUTPUT"
+        echo"-------------------------------------------"
         env
       id: extract_branch
       shell: bash
