@@ -55,6 +55,11 @@ runs:
         echo "---------------------------------------------------------------"
       shell: bash
       id: prepare_artifact
+    - name: Print Artifact Name
+      run: |
+        echo $ARTIFACT_NAME
+        echo ${{steps.prepare_artifact.ARTIFACT_NAME}}
+      shell: bash
     - name: Store Artifact
       if: inputs.store_artifact == 'true'
       uses: actions/upload-artifact@v2
