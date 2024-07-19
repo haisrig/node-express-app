@@ -49,6 +49,7 @@ runs:
         echo "Test github context"
         echo "${{github.event.repository.name}}"
         echo "${{github.event.repository}}"
+      shell: bash
     # - name: Store artifact
     #   uses: actions/upload-artifact@v4
     #   with:
