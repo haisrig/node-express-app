@@ -5,15 +5,27 @@ inputs:
     description: NodeJS version
     default: 18.20.3
   static_code_analysis:
-    description: Tool to be used for static code analysis
+    description: Tool to be used for static code analysis like sonar, lint.
     default: lint
+  build:
+    description: true if build action needs to be performed.
+  unit_test:
+    description: true if unit test action needs to be performed.
+  code_analysis:
+    description: true if static code analysis action needs to be performed.
+  store_artifact:
+    description: true to store the artifacts.
 
 default:
   shell: bash
 
 runs:
   using: composite
-  steps:    
+  steps:   
+    - name: print input envs
+      run: |
+        echo "${{input.build}}"
+        echo "${{input.store_artifact}}"
     - name: Setup Node
       if: inputs.node-version != '18.20.3'
       uses: actions/setup-node@v3

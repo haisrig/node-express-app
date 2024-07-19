@@ -9,7 +9,15 @@ outputs:
   build_type:
     description: 'Type of the build'
   static_code_analysis:
-    description: 'Static code analysis type like lint or sonar'
+    description: 'Static code analysis type like lint or sonar.'
+  build:
+    description: 'true if build action needs to be performed.'
+  unit_test:
+    description: 'true if unit test action needs to be performed.'
+  code_analysis:
+    description: 'true if static code analysis action needs to be performed.'
+  store_artifact:
+    description: 'true if build artifacts need to be stored.'
 
 runs:
   using: node20
