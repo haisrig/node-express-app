@@ -15,7 +15,7 @@ function run() {
 
     const repoConfig = yaml.load(fs.readFileSync('config.yaml', 'utf8'));
     console.log("Branch Name:", branchName);
-    const branchConfig = repoConfig.branches.filter(branch => branch.type == branchType);
+    const branchConfig = repoConfig.branches.filter(branch => branch.type == branchType)[0];
     console.log("Branch Config:", branchConfig);
     core.setOutput("build_type", repoConfig.build_type);
     core.setOutput("static_code_analysis", repoConfig.static_code_analysis);
