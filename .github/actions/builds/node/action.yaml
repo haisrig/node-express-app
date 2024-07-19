@@ -51,6 +51,8 @@ runs:
         env
         echo "---------------------------------------------------------------"
         cat $GITHUB_OUTPUT
+        echo $ARTIFACT_NAME
+        echo "---------------------------------------------------------------"
       shell: bash
       id: prepare_artifact
     - name: Store Artifact
