@@ -18,15 +18,7 @@ inputs:
 
 runs:
   using: composite
-  steps:    
-    - name: Get branch name from ref      
-      run: |
-        echo "branch=${GITHUB_REF_NAME}" >> $GITHUB_OUTPUT
-        cat $GITHUB_OUTPUT
-        echo "-------------------------------------------"
-        env
-      id: extract_branch
-      shell: bash
+  steps:
     - name: Read YAML File
       uses: ./.github/actions/read_yaml
       id: read_action

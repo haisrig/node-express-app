@@ -44,6 +44,11 @@ runs:
       if: inputs.code_analysis == 'true' && inputs.static_code_analysis == 'sonar'
       run: echo "Sonar analysis..."
       shell: bash
+    - name: Test Github context
+      run: |
+        echo "Test github context"
+        echo "${{github.event.repository.name}}"
+        echo "${{github.event.repository}}"
     # - name: Store artifact
     #   uses: actions/upload-artifact@v4
     #   with:
