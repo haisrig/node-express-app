@@ -3,7 +3,7 @@ on:
   push:
   workflow_dispatch:
 jobs:
-  read_config_file:
+  Node-Express-App:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
