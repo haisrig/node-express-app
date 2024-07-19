@@ -44,10 +44,11 @@ runs:
       if: inputs.code_analysis == 'true' && inputs.static_code_analysis == 'sonar'
       run: echo "Sonar analysis..."
       shell: bash
-    - name: Test Github context
+    - name: Prepare artifact name
       run: |
         echo "Test github context"
-        echo "${{github.event.repository.name}}"
+        echo "${GITHUB_REF_NAME////-}"
+        echo "${{github.event.repository.name}}-${GITHUB_RUN_NUMBER}"
         echo "${{github.event.repository}}"
       shell: bash
     # - name: Store artifact
