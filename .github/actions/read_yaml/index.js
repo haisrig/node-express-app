@@ -23,7 +23,7 @@ function run() {
     core.setOutput("unit_test", branchConfig.unit_tests);
     core.setOutput("code_analysis", branchConfig.code_analysis);
     core.setOutput("store_artifact", branchConfig.store_artifact);
-    console.log("unit_test:", branchConfig.unit_test);
+    console.log("unit_test:", branchConfig.unit_tests);
 
 
     // core.setOutput("build_type", branchConfig.build_type);
