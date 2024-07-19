@@ -29,7 +29,6 @@ runs:
       run: |
         npm ci
         npm run build
-        ls
       shell: bash
     - name: Execute Unitetests
       if: inputs.unit_test == 'true'
@@ -48,17 +47,8 @@ runs:
     - name: Prepare Artifact Name
       run: |
         echo "ARTIFACT_NAME=${{github.event.repository.name}}-${GITHUB_REF_NAME////-}-${GITHUB_RUN_NUMBER}" >> $GITHUB_OUTPUT
-        env
-        echo "---------------------------------------------------------------"
-        cat $GITHUB_OUTPUT
-        echo $ARTIFACT_NAME
-        echo "---------------------------------------------------------------"
       shell: bash
       id: prepare_artifact
-    - name: Print Artifact Name
-      run: |
-        echo ${{steps.prepare_artifact.outputs.ARTIFACT_NAME}}
-      shell: bash
     - name: Store Artifact
       if: inputs.store_artifact == 'true'
       uses: actions/upload-artifact@v2
