@@ -23,7 +23,7 @@ runs:
       run: |
         echo "branch=${GITHUB_REF_NAME}" >> $GITHUB_OUTPUT
         echo "$GITHUB_OUTPUT"
-        echo"-------------------------------------------"
+        echo "-------------------------------------------"
         env
       id: extract_branch
       shell: bash
