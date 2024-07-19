@@ -20,7 +20,6 @@ jobs:
             branch-name: ${{steps.extract_branch.outputs.branch}}
       - name: print configs
         run: |
-          env
           echo "-----------------------------------------"
           echo "${{steps.read_action.outputs.build_type}}"
           echo "${{steps.read_action.outputs.unit_test}}"

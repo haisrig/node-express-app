@@ -19,10 +19,10 @@ function run() {
     console.log("Branch Config:", branchConfig);
     core.setOutput("build_type", repoConfig.build_type);
     core.setOutput("static_code_analysis", repoConfig.static_code_analysis);
-    core.setOutput("build", branchConfig.build);
-    core.setOutput("unit_test", branchConfig.unit_tests);
-    core.setOutput("code_analysis", branchConfig.code_analysis);
-    core.setOutput("store_artifact", branchConfig.store_artifact);
+    core.setOutput("build", branchConfig.build.toString());
+    core.setOutput("unit_test", branchConfig.unit_tests.toString());
+    core.setOutput("code_analysis", branchConfig.code_analysis.toString());
+    core.setOutput("store_artifact", branchConfig.store_artifact.toString());
     console.log("unit_test:", branchConfig.unit_tests);
 
 
