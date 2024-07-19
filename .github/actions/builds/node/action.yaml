@@ -57,7 +57,7 @@ runs:
       id: prepare_artifact
     - name: Print Artifact Name
       run: |
-        echo ${{steps.prepare_artifact.ARTIFACT_NAME}}
+        echo ${{prepare_artifact.ARTIFACT_NAME}}
       shell: bash
     - name: Store Artifact
       if: inputs.store_artifact == 'true'
