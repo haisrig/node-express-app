@@ -20,8 +20,10 @@ jobs:
             branch-name: ${{steps.extract_branch.outputs.branch}}
       - name: print configs
         run: |
-          echo "${{env}}"
+          env
+          echo "-----------------------------------------"
           echo "${{steps.read_action.outputs.build_type}}"
+          echo "${{steps.read_action.outputs.unit_test}}"
 
       # - name: perform build
       #   uses: ./.github/actions/builds/node
