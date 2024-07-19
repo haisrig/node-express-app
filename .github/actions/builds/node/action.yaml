@@ -16,11 +16,11 @@ inputs:
   store_artifact:
     description: true to store the artifacts.
 
-default:
-  shell: bash
-
 runs:
   using: composite
+  defaults:
+    run:
+      shell: bash
   steps:
     - name: Setup Node
       if: inputs.node-version != '18.20.3'
@@ -32,7 +32,6 @@ runs:
       run: |
         npm ci
         npm run build
-      shell: bash
     - name: Execute Unitetests
       if: inputs.unit_test == 'true'
       run: npm run test
