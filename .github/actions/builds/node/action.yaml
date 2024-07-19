@@ -52,7 +52,7 @@ runs:
       if: inputs.store_artifact == 'true'
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ARTIFACT_NAME}}
+        name: "${{ARTIFACT_NAME}}"
         path: dist
     
 
