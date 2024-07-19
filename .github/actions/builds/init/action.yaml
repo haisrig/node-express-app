@@ -31,7 +31,7 @@ runs:
       uses: ./.github/actions/read_yaml
       id: read_action
       with:
-          branch-name: ${{steps.extract_branch.outputs.branch}}
+          branch-name: "${GITHUB_REF_NAME}"
     - name: perform build
       uses: ./.github/actions/builds/node
       with:          
