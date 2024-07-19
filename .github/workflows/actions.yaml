@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Execute Build
-        uses: ./.github/actions/builds
+        uses: ./.github/actions/builds/init
