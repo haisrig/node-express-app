@@ -24,8 +24,8 @@ runs:
   steps:   
     - name: print input envs
       run: |
-        echo "${{input.build}}"
-        echo "${{input.store_artifact}}"
+        echo "${{inputs.build}}"
+        echo "${{inputs.store_artifact}}"
       shell: bash
     - name: Setup Node
       if: inputs.node-version != '18.20.3'
