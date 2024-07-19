@@ -14,7 +14,8 @@ function run() {
     }
 
     const repoConfig = yaml.load(fs.readFileSync('config.yaml', 'utf8'));
-    console.log(typeof repoConfig);
+    console.log("Branch Name:", branchName)
+    console.log(repoConfig);
     console.log("..........................")
     const branchConfig = repoConfig.branches.filter(branch => branch.name == branchType)
     console.log("Branch Config:", branchConfig);
