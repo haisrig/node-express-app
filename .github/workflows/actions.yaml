@@ -9,16 +9,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Get branch name from ref
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
       - name: read_yaml_file
-        uses: actions-tools/yaml-outputs@v2
+        uses: ./.github/actions/read_yaml
         id: read_action
         with:
-            file-path: "${{ github.workspace }}/config.yaml"
-            separator: '.'
+            branch-name: ${{steps.extract_branch.outputs.branch}}
       - name: print configs
-        run: echo "${{env.static_code_analysis}}"
-      - name: perform build
-        uses: ./.github/actions/builds/node
-        with:
-          static_code_analysis: ${{env.static_code_analysis}}
+        run: |
+          echo "${{env}}"
+          echo "${{steps.read_action.outputs.build_type}}"
+
+      # - name: perform build
+      #   uses: ./.github/actions/builds/node
+      #   with:
+      #     static_code_analysis: ${{env.static_code_analysis}}
 

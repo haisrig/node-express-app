@@ -1,9 +1,15 @@
 build_type: node
 static_code_analysis: sonar
-branch_config:
-  branches: 
-  - name: feature
-    build: true
-    unit_tests: true
-    code_analysis: true
-    store_artifact: true
+
+branches: 
+- type: feature
+  build: true
+  unit_tests: true
+  code_analysis: true
+  store_artifact: true
+
+- type: develop
+  build: true
+  unit_tests: true
+  code_analysis: true
+  store_artifact: true

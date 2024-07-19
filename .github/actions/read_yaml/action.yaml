@@ -1,0 +1,16 @@
+name: Read Yaml File
+description: Reads github branch configuration yaml file using javascript.
+inputs:
+  branch-name:
+    description: Name of the branch.
+    default: main
+
+outputs:
+  build_type:
+    description: 'Type of the build'
+  static_code_analysis:
+    description: 'Static code analysis type like lint or sonar'
+
+runs:
+  using: node20
+  main: index.js
