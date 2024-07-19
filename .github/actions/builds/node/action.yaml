@@ -49,6 +49,7 @@ runs:
       run: |
         echo "printing...."
         echo "${{github.event.repository.name}}-${GITHUB_REF_NAME////-}-${GITHUB_RUN_NUMBER}"
+      shell: bash
     - name: Store artifact
       if: inputs.store_artifact == 'true'
       uses: actions/upload-artifact@v4
