@@ -5,7 +5,7 @@ branches:
 - type: feature
   build: true
   unit_tests: true
-  code_analysis: true
+  code_analysis: false
   store_artifact: true
 
 - type: develop

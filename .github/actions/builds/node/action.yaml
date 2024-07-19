@@ -40,7 +40,9 @@ runs:
       shell: bash
     - name: Perform ESLint
       if: inputs.code_analysis == 'true' && inputs.static_code_analysis == 'lint'
-      run: npm run lint
+      run: |
+        echo "Performing lint operation..."
+        npm run lint
       shell: bash
     - name: Perform Sonar Analysis
       if: inputs.code_analysis == 'true' && inputs.static_code_analysis == 'sonar'
