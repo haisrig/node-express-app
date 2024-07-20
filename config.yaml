@@ -1,4 +1,4 @@
-build_type: python
+build_type: node
 static_code_analysis: sonar
 
 branches: 
