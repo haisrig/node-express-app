@@ -14,6 +14,7 @@ function run() {
     }
 
     const fileName = core.getInput('file_name');
+    console.log("File Name: ", fileName);
     const repoConfig = yaml.load(fs.readFileSync(fileName, 'utf8'));
     const branchConfig = repoConfig.branches.filter(branch => branch.type == branchType)[0];
     console.log(branchConfig);
