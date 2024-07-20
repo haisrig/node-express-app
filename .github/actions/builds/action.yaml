@@ -14,7 +14,7 @@ runs:
       uses: ./.github/actions/read_yaml
       id: read_action
       with:
-          branch_name: "${{GITHUB_REF_NAME}}"
+          branch_name: "${GITHUB_REF_NAME}"
           file_name: "${{inputs.file_name}}"
     - name: perform build
       if: steps.read_action.outputs.build_type == 'node'
