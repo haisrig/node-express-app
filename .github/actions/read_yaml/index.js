@@ -3,7 +3,7 @@ const yaml = require('js-yaml');
 const core = require('@actions/core');
 
 function run() {
-    const branchName = core.getInput('branch-name');
+    const branchName = core.getInput('branch_name');
     let branchType = "feature";
     if(branchName == "develop") {
         branchType = "develop";
@@ -13,7 +13,8 @@ function run() {
         branchType = "prod";
     }
 
-    const repoConfig = yaml.load(fs.readFileSync('config.yaml', 'utf8'));
+    const fileName = core.getInput('file_name');
+    const repoConfig = yaml.load(fs.readFileSync(fileName, 'utf8'));
     const branchConfig = repoConfig.branches.filter(branch => branch.type == branchType)[0];
     console.log(branchConfig);
     core.setOutput("build_type", repoConfig.build_type);

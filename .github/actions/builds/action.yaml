@@ -4,18 +4,9 @@ inputs:
   node_version:
     description: NodeJS version
     default: 18.20.3
-  static_code_analysis:
-    description: Tool to be used for static code analysis like sonar, lint.
-    default: lint
-  build:
-    description: true if build action needs to be performed.
-  unit_test:
-    description: true if unit test action needs to be performed.
-  code_analysis:
-    description: true if static code analysis action needs to be performed.
-  store_artifact:
-    description: true to store the artifacts.
-
+  file_name:
+    description: Name of the config file. If not specified it will check for "config.yaml" file by default.
+    default: "config.yaml"
 runs:
   using: composite
   steps:
@@ -23,8 +14,10 @@ runs:
       uses: ./.github/actions/read_yaml
       id: read_action
       with:
-          branch-name: "${GITHUB_REF_NAME}"
+          branch_name: "${GITHUB_REF_NAME}"
+          file-name: ${{inputs.file_name}}
     - name: perform build
+      if: steps.read_action.outputs.build_type == 'node'
       uses: ./.github/actions/builds/node
       with:          
         build: ${{steps.read_action.outputs.build || 'false'}}
@@ -32,3 +25,4 @@ runs:
         code_analysis: ${{steps.read_action.outputs.code_analysis || 'false'}}
         store_artifact: ${{steps.read_action.outputs.store_artifact || 'false'}}
         static_code_analysis: ${{steps.read_action.outputs.static_code_analysis || 'sonar'}}
+        node_version: ${{inputs.node_version}}

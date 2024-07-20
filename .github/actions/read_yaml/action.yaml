@@ -1,9 +1,11 @@
 name: Read Yaml File
 description: Reads github branch configuration yaml file using javascript.
 inputs:
-  branch-name:
+  branch_name:
     description: Name of the branch.
     default: main
+  file_name:
+    description: Name of the config file. If not specified it will check for "config.yaml" file by default.
 
 outputs:
   build_type:
