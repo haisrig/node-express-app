@@ -15,7 +15,7 @@ runs:
       id: read_action
       with:
           branch_name: "${GITHUB_REF_NAME}"
-          file_name: ${{inputs.file_name}}
+          file_name: inputs.file_name
     - name: perform build
       if: steps.read_action.outputs.build_type == 'node'
       uses: ./.github/actions/builds/node
